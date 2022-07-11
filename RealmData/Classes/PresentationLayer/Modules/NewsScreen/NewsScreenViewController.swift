@@ -26,6 +26,8 @@ final class NewsScreenViewController: UIViewController, NavBarSetupable {
         
         self.view.backgroundColor = .white
         self.setupNavigationBar()
+        
+        self.presenter?.viewDidLoad()
     }
 }
 

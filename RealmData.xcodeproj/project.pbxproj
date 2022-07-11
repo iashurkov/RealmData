@@ -15,6 +15,8 @@
 		47247963287C735A0039BB26 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247962287C735A0039BB26 /* Constant.swift */; };
 		47247965287C78BB0039BB26 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247964287C78BB0039BB26 /* Colors.swift */; };
 		47247967287C7B570039BB26 /* NavBarSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247966287C7B570039BB26 /* NavBarSetupable.swift */; };
+		4724796C287C7CAD0039BB26 /* NewsMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4724796B287C7CAD0039BB26 /* NewsMockData.json */; };
+		47247971287C7F310039BB26 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247970287C7F310039BB26 /* NewsModel.swift */; };
 		4752B334287C656600D9FC3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752B333287C656600D9FC3F /* AppDelegate.swift */; };
 		4752B336287C656600D9FC3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752B335287C656600D9FC3F /* SceneDelegate.swift */; };
 		4752B33D287C656700D9FC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4752B33C287C656700D9FC3F /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 		47247962287C735A0039BB26 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		47247964287C78BB0039BB26 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		47247966287C7B570039BB26 /* NavBarSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarSetupable.swift; sourceTree = "<group>"; };
+		4724796B287C7CAD0039BB26 /* NewsMockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NewsMockData.json; sourceTree = "<group>"; };
+		47247970287C7F310039BB26 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		4752B330287C656600D9FC3F /* RealmData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4752B333287C656600D9FC3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4752B335287C656600D9FC3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,14 @@
 			path = FavoritesScreen;
 			sourceTree = "<group>";
 		};
+		4724796D287C7F190039BB26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				47247970287C7F310039BB26 /* NewsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4752B327287C656600D9FC3F = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +135,7 @@
 		4752B348287C67D200D9FC3F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4724796B287C7CAD0039BB26 /* NewsMockData.json */,
 				4752B333287C656600D9FC3F /* AppDelegate.swift */,
 				4752B335287C656600D9FC3F /* SceneDelegate.swift */,
 				4752B33C287C656700D9FC3F /* Assets.xcassets */,
@@ -185,6 +198,7 @@
 		476F6E40287C6997002CEE9A /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				4724796D287C7F190039BB26 /* Models */,
 				476F6E41287C699E002CEE9A /* Common */,
 			);
 			path = CoreLayer;
@@ -268,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4752B340287C656700D9FC3F /* LaunchScreen.storyboard in Resources */,
+				4724796C287C7CAD0039BB26 /* NewsMockData.json in Resources */,
 				4752B33D287C656700D9FC3F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				476F6E4D287C6A98002CEE9A /* SplashScreenAssembly.swift in Sources */,
+				47247971287C7F310039BB26 /* NewsModel.swift in Sources */,
 				476F6E64287C6C66002CEE9A /* UIViewController.swift in Sources */,
 				4724795D287C72050039BB26 /* FavoritesScreenPresenter.swift in Sources */,
 				476F6E43287C69AC002CEE9A /* Assembly.swift in Sources */,

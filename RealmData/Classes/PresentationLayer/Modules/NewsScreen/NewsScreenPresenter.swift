@@ -19,6 +19,10 @@ final class NewsScreenPresenter {
     var interactor: NewsScreenInteractorInput?
     var router: NewsScreenRouterInput?
     
+    // MARK: Private Properties
+    
+    private var newsModel = NewsModel(result: [])
+    
     // MARK: Init
     
     init() {
@@ -28,6 +32,19 @@ final class NewsScreenPresenter {
 // MARK: - NewsScreenViewOutput
 
 extension NewsScreenPresenter: NewsScreenViewOutput {
+    
+    func viewDidLoad() {
+        if let url = Bundle.main.url(forResource: "NewsMockData", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(NewsModel.self, from: data)
+                print("[ ## ] DEBUG : news model = \(jsonData)")
+            } catch {
+                print("error:\(error)")
+            }
+        }
+    }
 }
 
 // MARK: - NewsScreenInteractorOutput
