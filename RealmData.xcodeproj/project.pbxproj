@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4724795D287C72050039BB26 /* FavoritesScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247958287C72050039BB26 /* FavoritesScreenPresenter.swift */; };
+		4724795E287C72050039BB26 /* FavoritesScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247959287C72050039BB26 /* FavoritesScreenRouter.swift */; };
+		4724795F287C72050039BB26 /* FavoritesScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4724795A287C72050039BB26 /* FavoritesScreenViewController.swift */; };
+		47247960287C72050039BB26 /* FavoritesScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4724795B287C72050039BB26 /* FavoritesScreenAssembly.swift */; };
+		47247961287C72050039BB26 /* FavoritesScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4724795C287C72050039BB26 /* FavoritesScreenInteractor.swift */; };
+		47247963287C735A0039BB26 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247962287C735A0039BB26 /* Constant.swift */; };
+		47247965287C78BB0039BB26 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247964287C78BB0039BB26 /* Colors.swift */; };
+		47247967287C7B570039BB26 /* NavBarSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247966287C7B570039BB26 /* NavBarSetupable.swift */; };
 		4752B334287C656600D9FC3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752B333287C656600D9FC3F /* AppDelegate.swift */; };
 		4752B336287C656600D9FC3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752B335287C656600D9FC3F /* SceneDelegate.swift */; };
 		4752B33D287C656700D9FC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4752B33C287C656700D9FC3F /* Assets.xcassets */; };
@@ -16,11 +24,6 @@
 		476F6E4B287C6A98002CEE9A /* SplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E46287C6A98002CEE9A /* SplashScreenRouter.swift */; };
 		476F6E4C287C6A98002CEE9A /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E47287C6A98002CEE9A /* SplashScreenViewController.swift */; };
 		476F6E4D287C6A98002CEE9A /* SplashScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E48287C6A98002CEE9A /* SplashScreenAssembly.swift */; };
-		476F6E54287C6B02002CEE9A /* FavoriteScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E4F287C6B02002CEE9A /* FavoriteScreenPresenter.swift */; };
-		476F6E55287C6B02002CEE9A /* FavoriteScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E50287C6B02002CEE9A /* FavoriteScreenRouter.swift */; };
-		476F6E56287C6B02002CEE9A /* FavoriteScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E51287C6B02002CEE9A /* FavoriteScreenViewController.swift */; };
-		476F6E57287C6B02002CEE9A /* FavoriteScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E52287C6B02002CEE9A /* FavoriteScreenAssembly.swift */; };
-		476F6E58287C6B02002CEE9A /* FavoriteScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E53287C6B02002CEE9A /* FavoriteScreenInteractor.swift */; };
 		476F6E5E287C6B14002CEE9A /* NewsScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E59287C6B14002CEE9A /* NewsScreenPresenter.swift */; };
 		476F6E5F287C6B14002CEE9A /* NewsScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E5A287C6B14002CEE9A /* NewsScreenRouter.swift */; };
 		476F6E60287C6B14002CEE9A /* NewsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E5B287C6B14002CEE9A /* NewsScreenViewController.swift */; };
@@ -31,6 +34,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47247958287C72050039BB26 /* FavoritesScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreenPresenter.swift; sourceTree = "<group>"; };
+		47247959287C72050039BB26 /* FavoritesScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreenRouter.swift; sourceTree = "<group>"; };
+		4724795A287C72050039BB26 /* FavoritesScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreenViewController.swift; sourceTree = "<group>"; };
+		4724795B287C72050039BB26 /* FavoritesScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreenAssembly.swift; sourceTree = "<group>"; };
+		4724795C287C72050039BB26 /* FavoritesScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreenInteractor.swift; sourceTree = "<group>"; };
+		47247962287C735A0039BB26 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		47247964287C78BB0039BB26 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		47247966287C7B570039BB26 /* NavBarSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarSetupable.swift; sourceTree = "<group>"; };
 		4752B330287C656600D9FC3F /* RealmData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4752B333287C656600D9FC3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4752B335287C656600D9FC3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,11 +53,6 @@
 		476F6E46287C6A98002CEE9A /* SplashScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenRouter.swift; sourceTree = "<group>"; };
 		476F6E47287C6A98002CEE9A /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		476F6E48287C6A98002CEE9A /* SplashScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenAssembly.swift; sourceTree = "<group>"; };
-		476F6E4F287C6B02002CEE9A /* FavoriteScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenPresenter.swift; sourceTree = "<group>"; };
-		476F6E50287C6B02002CEE9A /* FavoriteScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenRouter.swift; sourceTree = "<group>"; };
-		476F6E51287C6B02002CEE9A /* FavoriteScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenViewController.swift; sourceTree = "<group>"; };
-		476F6E52287C6B02002CEE9A /* FavoriteScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenAssembly.swift; sourceTree = "<group>"; };
-		476F6E53287C6B02002CEE9A /* FavoriteScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteScreenInteractor.swift; sourceTree = "<group>"; };
 		476F6E59287C6B14002CEE9A /* NewsScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreenPresenter.swift; sourceTree = "<group>"; };
 		476F6E5A287C6B14002CEE9A /* NewsScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreenRouter.swift; sourceTree = "<group>"; };
 		476F6E5B287C6B14002CEE9A /* NewsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreenViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +73,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47247957287C71EE0039BB26 /* FavoritesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				47247958287C72050039BB26 /* FavoritesScreenPresenter.swift */,
+				47247959287C72050039BB26 /* FavoritesScreenRouter.swift */,
+				4724795A287C72050039BB26 /* FavoritesScreenViewController.swift */,
+				4724795B287C72050039BB26 /* FavoritesScreenAssembly.swift */,
+				4724795C287C72050039BB26 /* FavoritesScreenInteractor.swift */,
+			);
+			path = FavoritesScreen;
+			sourceTree = "<group>";
+		};
 		4752B327287C656600D9FC3F = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +126,8 @@
 				4752B333287C656600D9FC3F /* AppDelegate.swift */,
 				4752B335287C656600D9FC3F /* SceneDelegate.swift */,
 				4752B33C287C656700D9FC3F /* Assets.xcassets */,
+				47247962287C735A0039BB26 /* Constant.swift */,
+				47247964287C78BB0039BB26 /* Colors.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -133,8 +153,8 @@
 		4752B34C287C684800D9FC3F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				47247957287C71EE0039BB26 /* FavoritesScreen */,
 				476F6E44287C6A81002CEE9A /* SplashScreen */,
-				4752B34F287C686000D9FC3F /* FavoriteScreen */,
 				4752B34E287C685400D9FC3F /* NewsScreen */,
 			);
 			path = Modules;
@@ -145,6 +165,7 @@
 			children = (
 				476F6E63287C6C66002CEE9A /* UIViewController.swift */,
 				476F6E65287C6DAB002CEE9A /* ViewOutput.swift */,
+				47247966287C7B570039BB26 /* NavBarSetupable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,18 +180,6 @@
 				476F6E5D287C6B14002CEE9A /* NewsScreenInteractor.swift */,
 			);
 			path = NewsScreen;
-			sourceTree = "<group>";
-		};
-		4752B34F287C686000D9FC3F /* FavoriteScreen */ = {
-			isa = PBXGroup;
-			children = (
-				476F6E4F287C6B02002CEE9A /* FavoriteScreenPresenter.swift */,
-				476F6E50287C6B02002CEE9A /* FavoriteScreenRouter.swift */,
-				476F6E51287C6B02002CEE9A /* FavoriteScreenViewController.swift */,
-				476F6E52287C6B02002CEE9A /* FavoriteScreenAssembly.swift */,
-				476F6E53287C6B02002CEE9A /* FavoriteScreenInteractor.swift */,
-			);
-			path = FavoriteScreen;
 			sourceTree = "<group>";
 		};
 		476F6E40287C6997002CEE9A /* CoreLayer */ = {
@@ -270,25 +279,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				476F6E55287C6B02002CEE9A /* FavoriteScreenRouter.swift in Sources */,
 				476F6E4D287C6A98002CEE9A /* SplashScreenAssembly.swift in Sources */,
-				476F6E58287C6B02002CEE9A /* FavoriteScreenInteractor.swift in Sources */,
 				476F6E64287C6C66002CEE9A /* UIViewController.swift in Sources */,
+				4724795D287C72050039BB26 /* FavoritesScreenPresenter.swift in Sources */,
 				476F6E43287C69AC002CEE9A /* Assembly.swift in Sources */,
 				476F6E4C287C6A98002CEE9A /* SplashScreenViewController.swift in Sources */,
+				4724795E287C72050039BB26 /* FavoritesScreenRouter.swift in Sources */,
+				47247961287C72050039BB26 /* FavoritesScreenInteractor.swift in Sources */,
+				47247963287C735A0039BB26 /* Constant.swift in Sources */,
+				47247960287C72050039BB26 /* FavoritesScreenAssembly.swift in Sources */,
 				476F6E60287C6B14002CEE9A /* NewsScreenViewController.swift in Sources */,
-				476F6E54287C6B02002CEE9A /* FavoriteScreenPresenter.swift in Sources */,
+				47247965287C78BB0039BB26 /* Colors.swift in Sources */,
 				476F6E61287C6B14002CEE9A /* NewsScreenAssembly.swift in Sources */,
 				476F6E4A287C6A98002CEE9A /* SplashScreenPresenter.swift in Sources */,
 				476F6E66287C6DAB002CEE9A /* ViewOutput.swift in Sources */,
-				476F6E56287C6B02002CEE9A /* FavoriteScreenViewController.swift in Sources */,
 				4752B334287C656600D9FC3F /* AppDelegate.swift in Sources */,
 				476F6E5E287C6B14002CEE9A /* NewsScreenPresenter.swift in Sources */,
-				476F6E57287C6B02002CEE9A /* FavoriteScreenAssembly.swift in Sources */,
 				476F6E62287C6B14002CEE9A /* NewsScreenInteractor.swift in Sources */,
 				4752B336287C656600D9FC3F /* SceneDelegate.swift in Sources */,
 				476F6E4B287C6A98002CEE9A /* SplashScreenRouter.swift in Sources */,
+				4724795F287C72050039BB26 /* FavoritesScreenViewController.swift in Sources */,
 				476F6E5F287C6B14002CEE9A /* NewsScreenRouter.swift in Sources */,
+				47247967287C7B570039BB26 /* NavBarSetupable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +444,6 @@
 				INFOPLIST_FILE = RealmData/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -460,7 +471,6 @@
 				INFOPLIST_FILE = RealmData/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

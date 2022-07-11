@@ -11,7 +11,7 @@ import UIKit
 protocol NewsScreenViewInput: AnyObject {
 }
 
-final class NewsScreenViewController: UIViewController {
+final class NewsScreenViewController: UIViewController, NavBarSetupable {
     
     // MARK: Public Properties
     
@@ -21,6 +21,11 @@ final class NewsScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = Constant.NewsTabBarItem.title
+        
+        self.view.backgroundColor = .white
+        self.setupNavigationBar()
     }
 }
 

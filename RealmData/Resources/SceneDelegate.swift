@@ -61,13 +61,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, TransitionModel {
 
 // MARK: - AppDelegateInput
 
-extension SceneDelegate: SceneDelegateInput {
+extension SceneDelegate: SceneDelegateInput { 
  
     func setStartScreen() {
-        let model = NewsScreenAssembly.Model()
-        let viewController = NewsScreenAssembly.assembleModule(with: model)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        self.window?.rootViewController = navigationController
+        // First tab : News
+        let newsScreenModel = NewsScreenAssembly.Model()
+        let newsScreenViewController = NewsScreenAssembly.assembleModule(with: newsScreenModel)
+        let newsScreenNavigationController = UINavigationController(rootViewController: newsScreenViewController)
+        
+        // Second tab : Favorites
+        let favoritesScreenModel = FavoritesScreenAssembly.Model()
+        let favoritesScreenViewController = FavoritesScreenAssembly.assembleModule(with: favoritesScreenModel)
+        let favoritesScreenNavigationController = UINavigationController(rootViewController: favoritesScreenViewController)
+        
+        // Setting tab bar controller
+        let tabBarController = UITabBarController()
+        
+        tabBarController.setViewControllers([newsScreenNavigationController,
+                                             favoritesScreenNavigationController], animated: false)
+        tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.tabBar.tintColor = Colors.blue
+        tabBarController.tabBar.backgroundColor = Colors.gray
+        
+        // Setting tab bar items
+        guard let tabBarItems = tabBarController.tabBar.items else { return }
+        
+        let titleTabBarItems = [Constant.NewsTabBarItem.title,
+                                Constant.FavoritesTabBarItem.title]
+        let imageTabBarItems = [Constant.NewsTabBarItem.nameImage,
+                                Constant.FavoritesTabBarItem.nameImage]
+        let selectedImageTabBarItems = [Constant.NewsTabBarItem.nameSelectedImage,
+                                        Constant.FavoritesTabBarItem.nameSelectedImage]
+        
+        for id in 0..<tabBarItems.count {
+            tabBarItems[id].title = titleTabBarItems[id]
+            tabBarItems[id].image = UIImage.init(systemName: imageTabBarItems[id])
+            tabBarItems[id].selectedImage = UIImage.init(systemName: selectedImageTabBarItems[id])
+        }
+        
+        // Showing tab bar controller
+        self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
     }
 }

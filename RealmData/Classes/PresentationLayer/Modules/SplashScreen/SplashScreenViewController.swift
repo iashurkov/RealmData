@@ -21,6 +21,7 @@ final class SplashScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [weak self] in
             self?.presenter?.viewIsReady()
