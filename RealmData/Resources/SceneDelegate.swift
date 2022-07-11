@@ -7,7 +7,11 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+protocol SceneDelegateInput: AnyObject {
+    func setStartScreen()
+}
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, TransitionModel {
 
     var window: UIWindow?
 
@@ -16,7 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowsScene = (scene as? UIWindowScene) else { return }
+        let rootViewController = SplashScreenAssembly.assembleModule(with: self)
+        
+        self.window = UIWindow(frame: windowsScene.coordinateSpace.bounds)
+        self.window?.windowScene = windowsScene
+        self.window?.rootViewController = rootViewController
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -46,7 +57,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 
+// MARK: - AppDelegateInput
+
+extension SceneDelegate: SceneDelegateInput {
+ 
+    func setStartScreen() {
+        let model = NewsScreenAssembly.Model()
+        let viewController = NewsScreenAssembly.assembleModule(with: model)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+    }
+}
