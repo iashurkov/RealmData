@@ -56,15 +56,23 @@
 		4752B332287C656600D9FC3F /* RealmData */ = {
 			isa = PBXGroup;
 			children = (
+				4752B347287C66C100D9FC3F /* Storyboards */,
 				4752B333287C656600D9FC3F /* AppDelegate.swift */,
 				4752B335287C656600D9FC3F /* SceneDelegate.swift */,
 				4752B337287C656600D9FC3F /* ViewController.swift */,
-				4752B339287C656600D9FC3F /* Main.storyboard */,
 				4752B33C287C656700D9FC3F /* Assets.xcassets */,
-				4752B33E287C656700D9FC3F /* LaunchScreen.storyboard */,
 				4752B341287C656700D9FC3F /* Info.plist */,
 			);
 			path = RealmData;
+			sourceTree = "<group>";
+		};
+		4752B347287C66C100D9FC3F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4752B33E287C656700D9FC3F /* LaunchScreen.storyboard */,
+				4752B339287C656600D9FC3F /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
