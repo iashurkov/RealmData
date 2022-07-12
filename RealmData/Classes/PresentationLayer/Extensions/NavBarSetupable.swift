@@ -25,10 +25,10 @@ extension NavBarSetupable where Self: UIViewController {
             navBarAppearance.configureWithOpaqueBackground()
             navBarAppearance.shadowImage = nil
             navBarAppearance.shadowColor = nil
-            navBarAppearance.backgroundColor = UIColor.clear
+            navBarAppearance.backgroundColor = Colors.gray
             navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.label]
             navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
-                   
+            
             self.navigationBar?.standardAppearance = navBarAppearance
         }
     }
@@ -42,20 +42,21 @@ extension NavBarSetupable where Self: UIViewController {
     }
     
     func setupNavigationBar() {
-        self.navigationBar?.tintColor = UIColor.label
-   
+        self.navigationBar?.tintColor = Colors.black
+        self.navigationBar?.backgroundColor = Colors.gray
+        
         self.setNavBarAppearance()
         self.setBackBarButtonItemTitle(with: "")
         
         let fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
-        let font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        let attributes = [NSAttributedString.Key.foregroundColor : UIColor.label,
+        let font = UIFont.systemFont(ofSize: fontSize,
+                                     weight: .bold)
+        let attributes = [NSAttributedString.Key.foregroundColor: Colors.black,
                           NSAttributedString.Key.font: font]
-            
+        
         self.navigationBar?.prefersLargeTitles = true
         self.navigationBar?.largeTitleTextAttributes = attributes
-        self.navigationBar?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.label]
+        self.navigationBar?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Colors.black]
         self.navigationItem.largeTitleDisplayMode = .automatic
     }
 }
-

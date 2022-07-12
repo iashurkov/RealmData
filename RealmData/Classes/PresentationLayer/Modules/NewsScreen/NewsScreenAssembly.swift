@@ -12,7 +12,7 @@ final class NewsScreenAssembly: Assembly {
     
     static func assembleModule(with model: TransitionModel) -> UIViewController {
         guard model is Model
-            else { fatalError() }
+        else { fatalError() }
         
         let view = NewsScreenViewController()
         let router = NewsScreenRouter()

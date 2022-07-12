@@ -17,6 +17,7 @@
 		47247967287C7B570039BB26 /* NavBarSetupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247966287C7B570039BB26 /* NavBarSetupable.swift */; };
 		4724796C287C7CAD0039BB26 /* NewsMockData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4724796B287C7CAD0039BB26 /* NewsMockData.json */; };
 		47247971287C7F310039BB26 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47247970287C7F310039BB26 /* NewsModel.swift */; };
+		4725BA33287DAEF900188C9A /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4725BA32287DAEF900188C9A /* NSAttributedString.swift */; };
 		4752B334287C656600D9FC3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752B333287C656600D9FC3F /* AppDelegate.swift */; };
 		4752B336287C656600D9FC3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752B335287C656600D9FC3F /* SceneDelegate.swift */; };
 		4752B33D287C656700D9FC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4752B33C287C656700D9FC3F /* Assets.xcassets */; };
@@ -33,6 +34,12 @@
 		476F6E62287C6B14002CEE9A /* NewsScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E5D287C6B14002CEE9A /* NewsScreenInteractor.swift */; };
 		476F6E64287C6C66002CEE9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E63287C6C66002CEE9A /* UIViewController.swift */; };
 		476F6E66287C6DAB002CEE9A /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E65287C6DAB002CEE9A /* ViewOutput.swift */; };
+		47F64858287D55540056C727 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64857287D55540056C727 /* UITableView.swift */; };
+		47F6485A287D55C60056C727 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64859287D55C60056C727 /* NSObject.swift */; };
+		47F6485D287D56D60056C727 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6485C287D56D60056C727 /* NewsViewCell.swift */; };
+		47F64860287D6C9F0056C727 /* ExpandableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6485F287D6C9F0056C727 /* ExpandableLabel.swift */; };
+		47F64862287D6CCA0056C727 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64861287D6CCA0056C727 /* UILabel.swift */; };
+		47F64864287D6CDD0056C727 /* UITapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64863287D6CDD0056C727 /* UITapGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +53,7 @@
 		47247966287C7B570039BB26 /* NavBarSetupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarSetupable.swift; sourceTree = "<group>"; };
 		4724796B287C7CAD0039BB26 /* NewsMockData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NewsMockData.json; sourceTree = "<group>"; };
 		47247970287C7F310039BB26 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		4725BA32287DAEF900188C9A /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		4752B330287C656600D9FC3F /* RealmData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4752B333287C656600D9FC3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4752B335287C656600D9FC3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +72,12 @@
 		476F6E5D287C6B14002CEE9A /* NewsScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreenInteractor.swift; sourceTree = "<group>"; };
 		476F6E63287C6C66002CEE9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		476F6E65287C6DAB002CEE9A /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
+		47F64857287D55540056C727 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		47F64859287D55C60056C727 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		47F6485C287D56D60056C727 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
+		47F6485F287D6C9F0056C727 /* ExpandableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableLabel.swift; sourceTree = "<group>"; };
+		47F64861287D6CCA0056C727 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		47F64863287D6CDD0056C727 /* UITapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +171,7 @@
 		4752B34B287C683C00D9FC3F /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				47F6485E287D6C8A0056C727 /* CuctomClass */,
 				4752B34D287C685000D9FC3F /* Extensions */,
 				4752B34C287C684800D9FC3F /* Modules */,
 			);
@@ -166,6 +181,7 @@
 		4752B34C287C684800D9FC3F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				47F6485B287D56B70056C727 /* Cells */,
 				47247957287C71EE0039BB26 /* FavoritesScreen */,
 				476F6E44287C6A81002CEE9A /* SplashScreen */,
 				4752B34E287C685400D9FC3F /* NewsScreen */,
@@ -179,6 +195,11 @@
 				476F6E63287C6C66002CEE9A /* UIViewController.swift */,
 				476F6E65287C6DAB002CEE9A /* ViewOutput.swift */,
 				47247966287C7B570039BB26 /* NavBarSetupable.swift */,
+				47F64857287D55540056C727 /* UITableView.swift */,
+				47F64859287D55C60056C727 /* NSObject.swift */,
+				47F64861287D6CCA0056C727 /* UILabel.swift */,
+				47F64863287D6CDD0056C727 /* UITapGestureRecognizer.swift */,
+				4725BA32287DAEF900188C9A /* NSAttributedString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +242,22 @@
 				476F6E48287C6A98002CEE9A /* SplashScreenAssembly.swift */,
 			);
 			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		47F6485B287D56B70056C727 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				47F6485C287D56D60056C727 /* NewsViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		47F6485E287D6C8A0056C727 /* CuctomClass */ = {
+			isa = PBXGroup;
+			children = (
+				47F6485F287D6C9F0056C727 /* ExpandableLabel.swift */,
+			);
+			path = CuctomClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,11 +333,16 @@
 			files = (
 				476F6E4D287C6A98002CEE9A /* SplashScreenAssembly.swift in Sources */,
 				47247971287C7F310039BB26 /* NewsModel.swift in Sources */,
+				47F64862287D6CCA0056C727 /* UILabel.swift in Sources */,
 				476F6E64287C6C66002CEE9A /* UIViewController.swift in Sources */,
 				4724795D287C72050039BB26 /* FavoritesScreenPresenter.swift in Sources */,
 				476F6E43287C69AC002CEE9A /* Assembly.swift in Sources */,
+				47F64858287D55540056C727 /* UITableView.swift in Sources */,
+				4725BA33287DAEF900188C9A /* NSAttributedString.swift in Sources */,
 				476F6E4C287C6A98002CEE9A /* SplashScreenViewController.swift in Sources */,
+				47F6485A287D55C60056C727 /* NSObject.swift in Sources */,
 				4724795E287C72050039BB26 /* FavoritesScreenRouter.swift in Sources */,
+				47F6485D287D56D60056C727 /* NewsViewCell.swift in Sources */,
 				47247961287C72050039BB26 /* FavoritesScreenInteractor.swift in Sources */,
 				47247963287C735A0039BB26 /* Constant.swift in Sources */,
 				47247960287C72050039BB26 /* FavoritesScreenAssembly.swift in Sources */,
@@ -308,7 +350,9 @@
 				47247965287C78BB0039BB26 /* Colors.swift in Sources */,
 				476F6E61287C6B14002CEE9A /* NewsScreenAssembly.swift in Sources */,
 				476F6E4A287C6A98002CEE9A /* SplashScreenPresenter.swift in Sources */,
+				47F64860287D6C9F0056C727 /* ExpandableLabel.swift in Sources */,
 				476F6E66287C6DAB002CEE9A /* ViewOutput.swift in Sources */,
+				47F64864287D6CDD0056C727 /* UITapGestureRecognizer.swift in Sources */,
 				4752B334287C656600D9FC3F /* AppDelegate.swift in Sources */,
 				476F6E5E287C6B14002CEE9A /* NewsScreenPresenter.swift in Sources */,
 				476F6E62287C6B14002CEE9A /* NewsScreenInteractor.swift in Sources */,

@@ -9,6 +9,7 @@ import UIKit
 
 enum Colors {
     
+    static let black = #colorLiteral(red: 0.03921568627, green: 0.03921568627, blue: 0.03921568627, alpha: 1)
     static let orange = #colorLiteral(red: 0.8274509804, green: 0.5607843137, blue: 0.368627451, alpha: 1)
     static let yellow = #colorLiteral(red: 0.9529411765, green: 0.6823529412, blue: 0.3725490196, alpha: 1)
     static let blue = #colorLiteral(red: 0.0431372549, green: 0.5294117647, blue: 0.7294117647, alpha: 1)

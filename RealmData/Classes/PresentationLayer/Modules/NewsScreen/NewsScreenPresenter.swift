@@ -39,7 +39,9 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(NewsModel.self, from: data)
-                print("[ ## ] DEBUG : news model = \(jsonData)")
+                
+                self.view?.didOdtainData(with: jsonData)
+                
             } catch {
                 print("error:\(error)")
             }
