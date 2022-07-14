@@ -1,0 +1,8 @@
+# Xcode
+build/
+
+# CocoaPods
+Pods
+Podfile.lock
+
+/delivered
