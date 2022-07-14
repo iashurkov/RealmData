@@ -9,7 +9,7 @@ import UIKit
 
 protocol NewsViewCellDelegate: AnyObject {
     func didTapReadmoreButton()
-    func didTapFavoriteButton(for id: Int)
+    func didTapFavoriteButton(_ model: NewsItemModel?, isFavorite: Bool)
 }
 
 final class NewsViewCell: UITableViewCell {
@@ -222,8 +222,11 @@ final class NewsViewCell: UITableViewCell {
                           options: .transitionFlipFromRight,
                           animations: {
             sender.setImage(image, for: .normal)
-        }, completion: { _ in
-            self.delegate?.didTapFavoriteButton(for: self.model?.id ?? 0)
+        }, completion: { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.delegate?.didTapFavoriteButton(self.model,
+                                                isFavorite: self.isFavorite)
         })
     }
     

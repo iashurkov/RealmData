@@ -9,6 +9,7 @@
 import Foundation
 
 protocol NewsScreenViewOutput: ViewOutput {
+    func didTapFavoriteButton(_ model: NewsItemModel?, isFavorite: Bool)
 }
 
 final class NewsScreenPresenter {
@@ -46,6 +47,14 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
                 print("error:\(error)")
             }
         }
+    }
+    
+    func didTapFavoriteButton(_ model: NewsItemModel?, isFavorite: Bool) {
+        guard let model = model else { return }
+        
+        // TODO: add model to Realm
+        
+        NotificationCenter.default.post(Notification(name: .updateDatabase))
     }
 }
 

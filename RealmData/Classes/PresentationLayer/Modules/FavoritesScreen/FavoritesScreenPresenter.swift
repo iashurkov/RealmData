@@ -22,6 +22,20 @@ final class FavoritesScreenPresenter {
     // MARK: Init
     
     init() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.updateDatabase),
+                                               name: .updateDatabase,
+                                               object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: Private methods
+    
+    @objc private func updateDatabase(_ notification: Notification) {
+        // TODO: update view screen
     }
 }
 

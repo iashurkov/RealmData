@@ -134,7 +134,8 @@ extension NewsScreenViewController: NewsViewCellDelegate {
         self.forceUpdateTableView()
     }
     
-    func didTapFavoriteButton(for id: Int) {
-        
+    func didTapFavoriteButton(_ model: NewsItemModel?, isFavorite: Bool) {
+        self.presenter?.didTapFavoriteButton(model,
+                                             isFavorite: isFavorite)
     }
 }

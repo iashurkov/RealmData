@@ -34,6 +34,7 @@
 		476F6E62287C6B14002CEE9A /* NewsScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E5D287C6B14002CEE9A /* NewsScreenInteractor.swift */; };
 		476F6E64287C6C66002CEE9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E63287C6C66002CEE9A /* UIViewController.swift */; };
 		476F6E66287C6DAB002CEE9A /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E65287C6DAB002CEE9A /* ViewOutput.swift */; };
+		47A8000D288027BC006B1404 /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8000C288027BC006B1404 /* NSNotification.swift */; };
 		47F64858287D55540056C727 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64857287D55540056C727 /* UITableView.swift */; };
 		47F6485A287D55C60056C727 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64859287D55C60056C727 /* NSObject.swift */; };
 		47F6485D287D56D60056C727 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6485C287D56D60056C727 /* NewsViewCell.swift */; };
@@ -72,6 +73,7 @@
 		476F6E5D287C6B14002CEE9A /* NewsScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreenInteractor.swift; sourceTree = "<group>"; };
 		476F6E63287C6C66002CEE9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		476F6E65287C6DAB002CEE9A /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
+		47A8000C288027BC006B1404 /* NSNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
 		47F64857287D55540056C727 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		47F64859287D55C60056C727 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		47F6485C287D56D60056C727 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				47F64861287D6CCA0056C727 /* UILabel.swift */,
 				47F64863287D6CDD0056C727 /* UITapGestureRecognizer.swift */,
 				4725BA32287DAEF900188C9A /* NSAttributedString.swift */,
+				47A8000C288027BC006B1404 /* NSNotification.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				47F6485D287D56D60056C727 /* NewsViewCell.swift in Sources */,
 				47247961287C72050039BB26 /* FavoritesScreenInteractor.swift in Sources */,
 				47247963287C735A0039BB26 /* Constant.swift in Sources */,
+				47A8000D288027BC006B1404 /* NSNotification.swift in Sources */,
 				47247960287C72050039BB26 /* FavoritesScreenAssembly.swift in Sources */,
 				476F6E60287C6B14002CEE9A /* NewsScreenViewController.swift in Sources */,
 				47247965287C78BB0039BB26 /* Colors.swift in Sources */,
