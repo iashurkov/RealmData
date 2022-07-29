@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NewsModel: Codable {
+struct NewsModels: Codable {
     var result: [NewsItemModel]
     
     enum CodingKeys: String, CodingKey {
@@ -17,11 +17,12 @@ struct NewsModel: Codable {
 
 struct NewsItemModel: Codable, Equatable {
     let id: Int
-    let title: String
-    let description: String
-    let date: String
+    let title: String?
+    let description: String?
+    let date: String?
+    let isFavorite: Bool?
     
     enum CodingKeys: String, CodingKey {
-        case id, title, description, date
+        case id, title, description, date, isFavorite
     }
 }

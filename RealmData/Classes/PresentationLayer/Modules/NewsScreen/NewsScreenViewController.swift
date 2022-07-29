@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NewsScreenViewInput: AnyObject {
-    func didOdtainData(with model: NewsModel)
+    func didOdtainData(with model: NewsModels)
 }
 
 final class NewsScreenViewController: UIViewController, NavBarSetupable {
@@ -35,7 +35,7 @@ final class NewsScreenViewController: UIViewController, NavBarSetupable {
         return tableView
     }()
     
-    private var model: NewsModel?
+    private var model: NewsModels?
     
     // MARK: Lifecycle
     
@@ -108,22 +108,10 @@ extension NewsScreenViewController: UITableViewDataSource {
     }
 }
 
-
 // MARK: - UITableViewDelegate
 
 extension NewsScreenViewController: UITableViewDelegate {
     
-}
-
-
-// MARK: - NewsScreenViewInput
-
-extension NewsScreenViewController: NewsScreenViewInput {
-    
-    func didOdtainData(with model: NewsModel) {
-        self.model = model
-        self.tableView.reloadData()
-    }
 }
 
 // MARK: - NewsViewCellDelegate
@@ -134,8 +122,18 @@ extension NewsScreenViewController: NewsViewCellDelegate {
         self.forceUpdateTableView()
     }
     
-    func didTapFavoriteButton(_ model: NewsItemModel?, isFavorite: Bool) {
-        self.presenter?.didTapFavoriteButton(model,
+    func didTapFavoriteButton(for id: Int?, isFavorite: Bool) {
+        self.presenter?.didTapFavoriteButton(for: id,
                                              isFavorite: isFavorite)
+    }
+}
+
+// MARK: - NewsScreenViewInput
+
+extension NewsScreenViewController: NewsScreenViewInput {
+    
+    func didOdtainData(with model: NewsModels) {
+        self.model = model
+        self.tableView.reloadData()
     }
 }

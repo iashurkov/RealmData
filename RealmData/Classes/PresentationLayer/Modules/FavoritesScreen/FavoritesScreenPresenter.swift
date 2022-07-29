@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol FavoritesScreenViewOutput: ViewOutput {
+    func didTapFavoriteButton(for id: Int?, isFavorite: Bool)
 }
 
 final class FavoritesScreenPresenter {
@@ -18,6 +20,11 @@ final class FavoritesScreenPresenter {
     weak var view: FavoritesScreenViewInput?
     var interactor: FavoritesScreenInteractorInput?
     var router: FavoritesScreenRouterInput?
+    
+    // MARK: Private Properties
+    
+    private var newsModels: [NewsRealmModel]?
+    private let realmStorage: RealmStorageManager = RealmStorageManagerImp()
     
     // MARK: Init
     
@@ -36,12 +43,28 @@ final class FavoritesScreenPresenter {
     
     @objc private func updateDatabase(_ notification: Notification) {
         // TODO: update view screen
+        
+        let models = self.realmStorage.getAll()
+        self.newsModels = models
+        
+        print("[ ## ] DEBUG : updateDatabase : model = \(String(describing: self.newsModels))")
+        
+        self.view?.didOdtainData(with: self.newsModels)
     }
 }
 
 // MARK: - FavoritesScreenViewOutput
 
 extension FavoritesScreenPresenter: FavoritesScreenViewOutput {
+    
+    func didTapFavoriteButton(for id: Int?, isFavorite: Bool) {
+//        guard
+//            self.newsModel?.isEmpty == false,
+//            let id = id,
+//            let model = self.newsModel?.first(where: { $0.id == id })
+//        else { return }
+        
+    }
 }
 
 // MARK: - FavoritesScreenInteractorOutput

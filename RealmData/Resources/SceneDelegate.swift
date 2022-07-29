@@ -59,7 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, TransitionModel {
     }
 }
 
-// MARK: - AppDelegateInput
+// MARK: - SceneDelegateInput
 
 extension SceneDelegate: SceneDelegateInput { 
     
@@ -74,7 +74,7 @@ extension SceneDelegate: SceneDelegateInput {
         let favoritesScreenViewController = FavoritesScreenAssembly.assembleModule(with: favoritesScreenModel)
         let favoritesScreenNavigationController = UINavigationController(rootViewController: favoritesScreenViewController)
         
-        // Setting tab bar controller
+        // Setting UITabBarController
         let tabBarController = UITabBarController()
         
         tabBarController.setViewControllers([newsScreenNavigationController,
@@ -99,7 +99,7 @@ extension SceneDelegate: SceneDelegateInput {
             tabBarItems[id].selectedImage = UIImage.init(systemName: selectedImageTabBarItems[id])
         }
         
-        // Showing tab bar controller
+        // Showing UITabBarController
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
     }

@@ -9,7 +9,7 @@ import UIKit
 
 protocol NewsViewCellDelegate: AnyObject {
     func didTapReadmoreButton()
-    func didTapFavoriteButton(_ model: NewsItemModel?, isFavorite: Bool)
+    func didTapFavoriteButton(for id: Int?, isFavorite: Bool)
 }
 
 final class NewsViewCell: UITableViewCell {
@@ -189,7 +189,8 @@ final class NewsViewCell: UITableViewCell {
         self.model = model
         var arrayNSLayoutConstraint: [NSLayoutConstraint] = []
         
-        if !model.title.isEmpty {
+        if let title = model.title,
+           title.isEmpty == false {
             self.titleLabel.text = model.title
             self.resizeTitleLabel()
             self.aboutOfNewsStackView.addArrangedSubview(self.titleLabel)
@@ -197,13 +198,19 @@ final class NewsViewCell: UITableViewCell {
             arrayNSLayoutConstraint.append(self.constraintHeightTitleLabel)
         }
         
-        if !model.description.isEmpty {
-            self.descriptionLabel.setup(textForLabel: model.description,
+        if let description = model.description,
+           description.isEmpty == false {
+            self.descriptionLabel.setup(textForLabel: description,
                                         needNumberOfLines: 4)
             self.aboutOfNewsStackView.addArrangedSubview(self.descriptionLabel)
         }
         
         self.dateLabel.text = model.date
+        
+        let image = model.isFavorite == true
+        ? Constants.isFavorite
+        : Constants.isNotFavorite
+        self.favoriteButton.setImage(image, for: .normal)
         
         NSLayoutConstraint.activate(arrayNSLayoutConstraint)
     }
@@ -225,7 +232,7 @@ final class NewsViewCell: UITableViewCell {
         }, completion: { [weak self] _ in
             guard let self = self else { return }
             
-            self.delegate?.didTapFavoriteButton(self.model,
+            self.delegate?.didTapFavoriteButton(for: self.model?.id,
                                                 isFavorite: self.isFavorite)
         })
     }

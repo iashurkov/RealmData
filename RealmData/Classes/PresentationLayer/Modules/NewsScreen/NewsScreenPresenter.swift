@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol NewsScreenViewOutput: ViewOutput {
-    func didTapFavoriteButton(_ model: NewsItemModel?, isFavorite: Bool)
+    func didTapFavoriteButton(for id: Int?, isFavorite: Bool)
 }
 
 final class NewsScreenPresenter {
@@ -22,7 +23,8 @@ final class NewsScreenPresenter {
     
     // MARK: Private Properties
     
-    private var newsModel = NewsModel(result: [])
+    private var newsModels: NewsModels?
+    private let realmStorage: RealmStorageManager = RealmStorageManagerImp()
     
     // MARK: Init
     
@@ -39,22 +41,42 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(NewsModel.self, from: data)
+                let jsonData = try decoder.decode(NewsModels.self, from: data)
                 
+                self.newsModels = jsonData
                 self.view?.didOdtainData(with: jsonData)
-                
             } catch {
                 print("error:\(error)")
             }
         }
     }
     
-    func didTapFavoriteButton(_ model: NewsItemModel?, isFavorite: Bool) {
-        guard let model = model else { return }
+    func didTapFavoriteButton(for id: Int?, isFavorite: Bool) {
+        guard
+            self.newsModels?.result.isEmpty == false,
+            let id = id,
+            let model = self.newsModels?.result.first(where: { $0.id == id })
+        else { return }
         
-        // TODO: add model to Realm
+        let newsModel = NewsRealmModel(id: model.id,
+                                       title: model.title,
+                                       descriptionNews: model.description,
+                                       date: model.date,
+                                       isFavorite: isFavorite)
         
-        NotificationCenter.default.post(Notification(name: .updateDatabase))
+        // TODO: add/delete model to/from Realm
+        
+        if isFavorite {
+            print("[ ## ] Add model to Realm storage")
+            self.realmStorage.save(model: newsModel, completion: {
+                NotificationCenter.default.post(Notification(name: .updateDatabase))
+            })
+        } else {
+            print("[ ## ] Delete model from Realm storage")
+            self.realmStorage.delete(model: newsModel, completion: {
+                NotificationCenter.default.post(Notification(name: .updateDatabase))
+            })
+        }
     }
 }
 

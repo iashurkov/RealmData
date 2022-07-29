@@ -22,6 +22,7 @@
 		4752B336287C656600D9FC3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752B335287C656600D9FC3F /* SceneDelegate.swift */; };
 		4752B33D287C656700D9FC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4752B33C287C656700D9FC3F /* Assets.xcassets */; };
 		4752B340287C656700D9FC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4752B33E287C656700D9FC3F /* LaunchScreen.storyboard */; };
+		4753EF8728928E24005802E4 /* NewsRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4753EF8628928E24005802E4 /* NewsRealmModel.swift */; };
 		476F6E43287C69AC002CEE9A /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E42287C69AC002CEE9A /* Assembly.swift */; };
 		476F6E4A287C6A98002CEE9A /* SplashScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E45287C6A98002CEE9A /* SplashScreenPresenter.swift */; };
 		476F6E4B287C6A98002CEE9A /* SplashScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E46287C6A98002CEE9A /* SplashScreenRouter.swift */; };
@@ -35,6 +36,7 @@
 		476F6E64287C6C66002CEE9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E63287C6C66002CEE9A /* UIViewController.swift */; };
 		476F6E66287C6DAB002CEE9A /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E65287C6DAB002CEE9A /* ViewOutput.swift */; };
 		47A8000D288027BC006B1404 /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8000C288027BC006B1404 /* NSNotification.swift */; };
+		47DD12812893C3E2004963CF /* RealmStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DD12802893C3E2004963CF /* RealmStorageManager.swift */; };
 		47F64858287D55540056C727 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64857287D55540056C727 /* UITableView.swift */; };
 		47F6485A287D55C60056C727 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64859287D55C60056C727 /* NSObject.swift */; };
 		47F6485D287D56D60056C727 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6485C287D56D60056C727 /* NewsViewCell.swift */; };
@@ -63,6 +65,7 @@
 		4752B33C287C656700D9FC3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4752B33F287C656700D9FC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4752B341287C656700D9FC3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4753EF8628928E24005802E4 /* NewsRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRealmModel.swift; sourceTree = "<group>"; };
 		476F6E42287C69AC002CEE9A /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		476F6E45287C6A98002CEE9A /* SplashScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenPresenter.swift; sourceTree = "<group>"; };
 		476F6E46287C6A98002CEE9A /* SplashScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenRouter.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		476F6E63287C6C66002CEE9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		476F6E65287C6DAB002CEE9A /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
 		47A8000C288027BC006B1404 /* NSNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
+		47DD12802893C3E2004963CF /* RealmStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageManager.swift; sourceTree = "<group>"; };
 		47F64857287D55540056C727 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		47F64859287D55C60056C727 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		47F6485C287D56D60056C727 /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
@@ -104,7 +108,6 @@
 				C44896D37F064BFC2150576F /* Pods-RealmData.debug.xcconfig */,
 				750553C834B3E303E6875E79 /* Pods-RealmData.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -201,9 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				47F6485B287D56B70056C727 /* Cells */,
-				47247957287C71EE0039BB26 /* FavoritesScreen */,
 				476F6E44287C6A81002CEE9A /* SplashScreen */,
 				4752B34E287C685400D9FC3F /* NewsScreen */,
+				47247957287C71EE0039BB26 /* FavoritesScreen */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -236,9 +239,27 @@
 			path = NewsScreen;
 			sourceTree = "<group>";
 		};
+		4753EF8028928D07005802E4 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4753EF8128928D10005802E4 /* Realm */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		4753EF8128928D10005802E4 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				4753EF8628928E24005802E4 /* NewsRealmModel.swift */,
+				47DD12802893C3E2004963CF /* RealmStorageManager.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		476F6E40287C6997002CEE9A /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				4753EF8028928D07005802E4 /* Storage */,
 				4724796D287C7F190039BB26 /* Models */,
 				476F6E41287C699E002CEE9A /* Common */,
 			);
@@ -403,8 +424,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4753EF8728928E24005802E4 /* NewsRealmModel.swift in Sources */,
 				476F6E4D287C6A98002CEE9A /* SplashScreenAssembly.swift in Sources */,
 				47247971287C7F310039BB26 /* NewsModel.swift in Sources */,
+				47DD12812893C3E2004963CF /* RealmStorageManager.swift in Sources */,
 				47F64862287D6CCA0056C727 /* UILabel.swift in Sources */,
 				476F6E64287C6C66002CEE9A /* UIViewController.swift in Sources */,
 				4724795D287C72050039BB26 /* FavoritesScreenPresenter.swift in Sources */,
