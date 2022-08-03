@@ -14,10 +14,12 @@ final class NewsScreenAssembly: Assembly {
         guard model is Model
         else { fatalError() }
         
+        let realmStorage: RealmStorageManager = RealmStorageManagerImp()
+        
         let view = NewsScreenViewController()
         let router = NewsScreenRouter()
         let presenter = NewsScreenPresenter()
-        let interactor = NewsScreenInteractor()
+        let interactor = NewsScreenInteractor(realmStorage: realmStorage)
         
         view.presenter = presenter
         

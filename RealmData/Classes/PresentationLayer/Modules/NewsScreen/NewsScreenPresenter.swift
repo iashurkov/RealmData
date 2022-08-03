@@ -24,7 +24,6 @@ final class NewsScreenPresenter {
     // MARK: Private Properties
     
     private var newsModels: NewsModels?
-    private let realmStorage: RealmStorageManager = RealmStorageManagerImp()
     
     // MARK: Init
     
@@ -50,11 +49,11 @@ final class NewsScreenPresenter {
     }
     
     private func checkStorageModel(completion: (() -> Void)?) {
-        let realmModels = self.realmStorage.getAll()
-        
-        for item in realmModels {
-            if let index = self.newsModels?.result.firstIndex(where: { $0.id == item.id }) {
-                self.newsModels?.result[index].isFavorite = item.isFavorite
+        if let realmModels = self.interactor?.getAllModesFromRealmStorage() {
+            for item in realmModels {
+                if let index = self.newsModels?.result.firstIndex(where: { $0.id == item.id }) {
+                    self.newsModels?.result[index].isFavorite = item.isFavorite
+                }
             }
         }
         
@@ -67,20 +66,10 @@ final class NewsScreenPresenter {
 extension NewsScreenPresenter: NewsScreenViewOutput {
     
     func viewDidLoad() {
-        if let url = Bundle.main.url(forResource: "NewsMockData", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(NewsModels.self, from: data)
-                
-                self.newsModels = jsonData
-                self.checkStorageModel {
-                    if let models = self.newsModels {
-                        self.view?.didOdtainData(with: models)
-                    }
-                }
-            } catch {
-                print("error:\(error)")
+        self.newsModels = self.interactor?.obtainData()
+        self.checkStorageModel {
+            if let models = self.newsModels {
+                self.view?.didOdtainData(with: models)
             }
         }
     }
@@ -98,13 +87,13 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
                                        date: model.date,
                                        isFavorite: isFavorite)
         if isFavorite {
-            self.realmStorage.save(model: newsModel, completion: {
+            self.interactor?.addModelToRealmStorage(model: newsModel) {
                 NotificationCenter.default.post(Notification(name: .updateFavoriteList))
-            })
+            }
         } else {
-            self.realmStorage.delete(model: newsModel, completion: {
+            self.interactor?.removeModelFromRealmStorage(model: newsModel) {
                 NotificationCenter.default.post(Notification(name: .updateFavoriteList))
-            })
+            }
         }
     }
 }

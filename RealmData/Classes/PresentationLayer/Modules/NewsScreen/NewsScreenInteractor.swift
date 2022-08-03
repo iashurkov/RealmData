@@ -10,6 +10,11 @@ import Foundation
 
 
 protocol NewsScreenInteractorInput {
+    func obtainData() -> NewsModels
+    
+    func getAllModesFromRealmStorage() -> [NewsRealmModel]
+    func addModelToRealmStorage(model: NewsRealmModel, completion: (() -> Void)?)
+    func removeModelFromRealmStorage(model: NewsRealmModel, completion: (() -> Void)?)
 }
 
 protocol NewsScreenInteractorOutput: AnyObject {
@@ -21,13 +26,50 @@ final class NewsScreenInteractor {
     
     weak var presenter: NewsScreenInteractorOutput?
     
+    // MARK: Private Properties
+    
+    private let realmStorage: RealmStorageManager
+    
     // MARK: Init
     
-    init() {
+    init(realmStorage: RealmStorageManager) {
+        self.realmStorage = realmStorage
     }
 }
 
 // MARK: - NewsScreenInteractorInput
 
 extension NewsScreenInteractor: NewsScreenInteractorInput {
+    
+    func obtainData() -> NewsModels {
+        if let url = Bundle.main.url(forResource: "NewsMockData", withExtension: "json") {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(NewsModels.self, from: data)
+                
+                return jsonData
+            } catch {
+                print("error:\(error)")
+            }
+        }
+        
+        return NewsModels(result: [])
+    }
+    
+    func getAllModesFromRealmStorage() -> [NewsRealmModel] {
+        return self.realmStorage.getAll()
+    }
+    
+    func addModelToRealmStorage(model: NewsRealmModel, completion: (() -> Void)?) {
+        self.realmStorage.save(model: model) {
+            completion?()
+        }
+    }
+    
+    func removeModelFromRealmStorage(model: NewsRealmModel, completion: (() -> Void)?) {
+        self.realmStorage.delete(model: model) {
+            completion?()
+        }
+    }
 }
