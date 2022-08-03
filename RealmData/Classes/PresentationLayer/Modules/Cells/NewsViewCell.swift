@@ -187,6 +187,7 @@ final class NewsViewCell: UITableViewCell {
     
     func setup(with model: NewsItemModel) {
         self.model = model
+        self.isFavorite = model.isFavorite ?? false
         var arrayNSLayoutConstraint: [NSLayoutConstraint] = []
         
         if let title = model.title,

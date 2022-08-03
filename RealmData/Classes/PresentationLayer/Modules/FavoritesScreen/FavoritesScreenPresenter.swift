@@ -4,7 +4,6 @@
 //
 //  Created by iashurkov on 11.07.2022.
 //  
-//
 
 import Foundation
 import RealmSwift
@@ -24,7 +23,6 @@ final class FavoritesScreenPresenter {
     // MARK: Private Properties
     
     private var newsModels: [NewsRealmModel]?
-    private let realmStorage: RealmStorageManager = RealmStorageManagerImp()
     
     // MARK: Init
     
@@ -46,7 +44,7 @@ final class FavoritesScreenPresenter {
     }
     
     private func obtainData() {
-        self.newsModels = self.realmStorage.getAll()
+        self.newsModels = self.interactor?.getAllModesFromRealmStorage()
         self.view?.didOdtainData(with: self.newsModels)
     }
 }
@@ -72,14 +70,14 @@ extension FavoritesScreenPresenter: FavoritesScreenViewOutput {
                                        date: model.date,
                                        isFavorite: isFavorite)
         
-        self.realmStorage.delete(model: newsModel, completion: {
+        self.interactor?.removeModelFromRealmStorage(model: newsModel) {
             if let index = self.newsModels?.firstIndex(where: { $0.id == id }) {
                 self.newsModels?.remove(at: index)
                 self.view?.didOdtainData(with: self.newsModels)
             }
             
             NotificationCenter.default.post(Notification(name: .updateNewsList))
-        })
+        }
     }
 }
 
