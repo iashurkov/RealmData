@@ -9,4 +9,5 @@ import Foundation
 
 extension NSNotification.Name {
     static let updateFavoriteList = NSNotification.Name("updateFavoriteList")
+    static let updateNewsList = NSNotification.Name("updateNewsList")
 }

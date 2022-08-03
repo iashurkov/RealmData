@@ -22,7 +22,6 @@ class RealmStorageManagerImp: RealmStorageManager {
     
     func save(model: NewsRealmModel, completion: (() -> Void)?) {
         try? self.realmStorage?.write {
-            print("[ ## ] DEBUG : Add new model in realm storage")
             self.realmStorage?.add(model)
             completion?()
         }
@@ -30,7 +29,6 @@ class RealmStorageManagerImp: RealmStorageManager {
     
     func update(model: NewsRealmModel, completion: (() -> Void)?) {
         try? self.realmStorage?.write {
-            print("[ ## ] DEBUG : Update model in realm storage")
             self.realmStorage?.add(model, update: .modified)
             completion?()
         }
@@ -40,7 +38,6 @@ class RealmStorageManagerImp: RealmStorageManager {
         let idPredicate = NSPredicate(format: "id == %ld", model.id)
         
         if let model = self.realmStorage?.objects(NewsRealmModel.self).filter(idPredicate) {
-            print("[ ## ] DEBUG : Delete \(model) from realm storage")
             try? self.realmStorage?.write {
                 self.realmStorage?.delete(model)
                 completion?()
@@ -51,7 +48,6 @@ class RealmStorageManagerImp: RealmStorageManager {
     func deleteAll() {
         if let models = self.realmStorage?.objects(NewsRealmModel.self) {
             try? self.realmStorage?.write {
-                print("[ ## ] DEBUG : Delete all models from realm storage")
                 self.realmStorage?.delete(models)
             }
         }
@@ -61,8 +57,6 @@ class RealmStorageManagerImp: RealmStorageManager {
         let models = self.realmStorage?.objects(NewsRealmModel.self)
         var newsModels: [NewsRealmModel] = []
         
-        print("[ ## ] DEBUG : Get all \(String(describing: models?.count)) models from realm storage")
-        
         models?.forEach({
             let item = NewsRealmModel(id: $0.id,
                                       title: $0.title,
@@ -71,6 +65,10 @@ class RealmStorageManagerImp: RealmStorageManager {
                                       isFavorite: $0.isFavorite)
             newsModels.append(item)
         })
+        
+        newsModels.sort {
+            $0.id < $1.id
+        }
         
         return newsModels
     }

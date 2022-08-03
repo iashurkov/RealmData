@@ -47,6 +47,8 @@ final class FavoritesScreenViewController: UIViewController, NavBarSetupable {
         
         self.setupNavigationBar()
         self.drawSelf()
+        
+        self.presenter?.viewDidLoad()
     }
     
     // MARK: Drawing
@@ -92,9 +94,6 @@ extension FavoritesScreenViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("[ ## ] RELOAD table view : numberOfRowsInSection : count = \(self.model?.count ?? 0)")
-        
         return self.model?.count ?? 0
     }
     

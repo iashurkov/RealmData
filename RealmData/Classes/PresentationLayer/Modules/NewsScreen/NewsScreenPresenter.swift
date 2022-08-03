@@ -29,6 +29,36 @@ final class NewsScreenPresenter {
     // MARK: Init
     
     init() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.updateNewsList),
+                                               name: .updateNewsList,
+                                               object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: Private methods
+    
+    @objc private func updateNewsList(_ notification: Notification) {
+        self.checkStorageModel {
+            if let models = self.newsModels {
+                self.view?.didOdtainData(with: models)
+            }
+        }
+    }
+    
+    private func checkStorageModel(completion: (() -> Void)?) {
+        let realmModels = self.realmStorage.getAll()
+        
+        for item in realmModels {
+            if let index = self.newsModels?.result.firstIndex(where: { $0.id == item.id }) {
+                self.newsModels?.result[index].isFavorite = item.isFavorite
+            }
+        }
+        
+        completion?()
     }
 }
 
@@ -37,9 +67,6 @@ final class NewsScreenPresenter {
 extension NewsScreenPresenter: NewsScreenViewOutput {
     
     func viewDidLoad() {
-        
-        self.realmStorage.deleteAll()
-        
         if let url = Bundle.main.url(forResource: "NewsMockData", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
@@ -47,7 +74,11 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
                 let jsonData = try decoder.decode(NewsModels.self, from: data)
                 
                 self.newsModels = jsonData
-                self.view?.didOdtainData(with: jsonData)
+                self.checkStorageModel {
+                    if let models = self.newsModels {
+                        self.view?.didOdtainData(with: models)
+                    }
+                }
             } catch {
                 print("error:\(error)")
             }
@@ -68,12 +99,10 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
                                        isFavorite: isFavorite)
         if isFavorite {
             self.realmStorage.save(model: newsModel, completion: {
-                print("[ ## ] Add model to Realm storage")
                 NotificationCenter.default.post(Notification(name: .updateFavoriteList))
             })
         } else {
             self.realmStorage.delete(model: newsModel, completion: {
-                print("[ ## ] Delete model from Realm storage")
                 NotificationCenter.default.post(Notification(name: .updateFavoriteList))
             })
         }

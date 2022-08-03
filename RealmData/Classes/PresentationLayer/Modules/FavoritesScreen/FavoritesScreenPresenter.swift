@@ -42,13 +42,11 @@ final class FavoritesScreenPresenter {
     // MARK: Private methods
     
     @objc private func updateFavoriteList(_ notification: Notification) {
-        // TODO: update view screen
-        
-        let models = self.realmStorage.getAll()
-        self.newsModels = models
-        
-        print("[ ## ] DEBUG : updateFavoriteList : model = \(String(describing: self.newsModels))")
-        
+        self.obtainData()
+    }
+    
+    private func obtainData() {
+        self.newsModels = self.realmStorage.getAll()
         self.view?.didOdtainData(with: self.newsModels)
     }
 }
@@ -57,13 +55,31 @@ final class FavoritesScreenPresenter {
 
 extension FavoritesScreenPresenter: FavoritesScreenViewOutput {
     
+    func viewDidLoad() {
+        self.obtainData()
+    }
+    
     func didTapFavoriteButton(for id: Int?, isFavorite: Bool) {
-//        guard
-//            self.newsModel?.isEmpty == false,
-//            let id = id,
-//            let model = self.newsModel?.first(where: { $0.id == id })
-//        else { return }
+        guard
+            self.newsModels?.isEmpty == false,
+            let id = id,
+            let model = self.newsModels?.first(where: { $0.id == id })
+        else { return }
         
+        let newsModel = NewsRealmModel(id: model.id,
+                                       title: model.title,
+                                       descriptionNews: model.description,
+                                       date: model.date,
+                                       isFavorite: isFavorite)
+        
+        self.realmStorage.delete(model: newsModel, completion: {
+            if let index = self.newsModels?.firstIndex(where: { $0.id == id }) {
+                self.newsModels?.remove(at: index)
+                self.view?.didOdtainData(with: self.newsModels)
+            }
+            
+            NotificationCenter.default.post(Notification(name: .updateNewsList))
+        })
     }
 }
 

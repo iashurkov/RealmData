@@ -20,7 +20,7 @@ struct NewsItemModel: Codable, Equatable {
     let title: String?
     let description: String?
     let date: String?
-    let isFavorite: Bool?
+    var isFavorite: Bool?
     
     enum CodingKeys: String, CodingKey {
         case id, title, description, date, isFavorite
