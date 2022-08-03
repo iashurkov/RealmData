@@ -113,6 +113,15 @@ final class NewsViewCell: UITableViewCell {
         self.drawSelf()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.titleLabel.text = nil
+        self.descriptionLabel.text = nil
+        self.dateLabel.text = nil
+        self.favoriteButton.setImage(Constants.isNotFavorite, for: .normal)
+    }
+    
     // MARK: Drawing
     
     private func drawSelf() {
