@@ -37,10 +37,14 @@ class RealmStorageManagerImp: RealmStorageManager {
     }
     
     func delete(model: NewsRealmModel, completion: (() -> Void)?) {
-        try? self.realmStorage?.write {
-            print("[ ## ] DEBUG : Delete model from realm storage")
-            self.realmStorage?.delete(model)
-            completion?()
+        let idPredicate = NSPredicate(format: "id == %ld", model.id)
+        
+        if let model = self.realmStorage?.objects(NewsRealmModel.self).filter(idPredicate) {
+            print("[ ## ] DEBUG : Delete \(model) from realm storage")
+            try? self.realmStorage?.write {
+                self.realmStorage?.delete(model)
+                completion?()
+            }
         }
     }
     

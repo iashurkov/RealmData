@@ -37,6 +37,9 @@ final class NewsScreenPresenter {
 extension NewsScreenPresenter: NewsScreenViewOutput {
     
     func viewDidLoad() {
+        
+        self.realmStorage.deleteAll()
+        
         if let url = Bundle.main.url(forResource: "NewsMockData", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
@@ -63,18 +66,15 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
                                        descriptionNews: model.description,
                                        date: model.date,
                                        isFavorite: isFavorite)
-        
-        // TODO: add/delete model to/from Realm
-        
         if isFavorite {
-            print("[ ## ] Add model to Realm storage")
             self.realmStorage.save(model: newsModel, completion: {
-                NotificationCenter.default.post(Notification(name: .updateDatabase))
+                print("[ ## ] Add model to Realm storage")
+                NotificationCenter.default.post(Notification(name: .updateFavoriteList))
             })
         } else {
-            print("[ ## ] Delete model from Realm storage")
             self.realmStorage.delete(model: newsModel, completion: {
-                NotificationCenter.default.post(Notification(name: .updateDatabase))
+                print("[ ## ] Delete model from Realm storage")
+                NotificationCenter.default.post(Notification(name: .updateFavoriteList))
             })
         }
     }

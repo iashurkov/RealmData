@@ -15,10 +15,6 @@ final class NewsRealmModel: Object {
     @objc dynamic var date: String?
     @objc dynamic var isFavorite = false
     
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
     convenience init(id: Int,
                      title: String?,
                      descriptionNews: String?,

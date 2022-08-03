@@ -30,8 +30,8 @@ final class FavoritesScreenPresenter {
     
     init() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.updateDatabase),
-                                               name: .updateDatabase,
+                                               selector: #selector(self.updateFavoriteList),
+                                               name: .updateFavoriteList,
                                                object: nil)
     }
     
@@ -41,13 +41,13 @@ final class FavoritesScreenPresenter {
     
     // MARK: Private methods
     
-    @objc private func updateDatabase(_ notification: Notification) {
+    @objc private func updateFavoriteList(_ notification: Notification) {
         // TODO: update view screen
         
         let models = self.realmStorage.getAll()
         self.newsModels = models
         
-        print("[ ## ] DEBUG : updateDatabase : model = \(String(describing: self.newsModels))")
+        print("[ ## ] DEBUG : updateFavoriteList : model = \(String(describing: self.newsModels))")
         
         self.view?.didOdtainData(with: self.newsModels)
     }

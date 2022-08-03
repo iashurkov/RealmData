@@ -93,16 +93,17 @@ extension FavoritesScreenViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("[ ## ] RELOAD table view : count = \(self.model?.count ?? 0)")
+        print("[ ## ] RELOAD table view : numberOfRowsInSection : count = \(self.model?.count ?? 0)")
         
         return self.model?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: NewsViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.delegate = self
         
         if let model = self.model?[indexPath.row] {
+            let cell: NewsViewCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.delegate = self
+            
             let newsModel = NewsItemModel.init(id: model.id,
                                                title: model.title,
                                                description: model.descriptionNews,
@@ -110,9 +111,10 @@ extension FavoritesScreenViewController: UITableViewDataSource {
                                                isFavorite: model.isFavorite)
             
             cell.setup(with: newsModel)
+            return cell
         }
         
-        return cell
+        return UITableViewCell()
     }
 }
 
