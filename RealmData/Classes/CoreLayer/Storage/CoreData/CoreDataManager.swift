@@ -12,7 +12,7 @@ class CoreDataManager {
     
     static let shared = CoreDataManager()
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreDataModels")
         container.loadPersistentStores { (description, error) in
             if let error = error {
@@ -23,7 +23,7 @@ class CoreDataManager {
         return container
     }()
     
-    func updateStorage(_ completion: (() -> Void)?) {
+    private func updateStorage(_ completion: (() -> Void)?) {
         let context = self.persistentContainer.viewContext
         
         if context.hasChanges {
@@ -37,7 +37,7 @@ class CoreDataManager {
         }
     }
     
-    func addModel(_ model: NewsItemModel, completion: (() -> Void)?) {
+    func save(_ model: NewsItemModel, completion: (() -> Void)?) {
         let coreDataModel = News(context: self.persistentContainer.viewContext)
         coreDataModel.id = Int16(model.id)
         coreDataModel.title = model.title
@@ -48,7 +48,7 @@ class CoreDataManager {
         self.updateStorage(completion)
     }
     
-    func delete(model: NewsItemModel, completion: (() -> Void)?) {
+    func delete(_ model: NewsItemModel, completion: (() -> Void)?) {
         let context = self.persistentContainer.viewContext
         let request: NSFetchRequest<News> = News.fetchRequest()
         request.predicate = NSPredicate(format: "id == %ld", model.id)

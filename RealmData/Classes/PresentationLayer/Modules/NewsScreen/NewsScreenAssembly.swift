@@ -10,15 +10,12 @@ import UIKit
 final class NewsScreenAssembly: Assembly {
     
     static func assembleModule(with model: TransitionModel) -> UIViewController {
-        guard model is Model
-        else { fatalError() }
-        
-        let realmStorage: RealmStorageManager = RealmStorageManagerImp()
+        guard model is Model else { fatalError() }
         
         let view = NewsScreenViewController()
         let router = NewsScreenRouter()
         let presenter = NewsScreenPresenter()
-        let interactor = NewsScreenInteractor(realmStorage: realmStorage)
+        let interactor = NewsScreenInteractor()
         
         view.presenter = presenter
         

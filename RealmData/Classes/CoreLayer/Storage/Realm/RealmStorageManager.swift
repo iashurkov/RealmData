@@ -8,35 +8,39 @@
 import Foundation
 import RealmSwift
 
-protocol RealmStorageManager {
-    func save(model: NewsRealmModel, completion: (() -> Void)?)
-    func update(model: NewsRealmModel, completion: (() -> Void)?)
-    func delete(model: NewsRealmModel, completion: (() -> Void)?)
-    func deleteAll(completion: (() -> Void)?)
-    func getAll() -> [NewsRealmModel]
-}
-
-class RealmStorageManagerImp: RealmStorageManager {
+class RealmStorageManager {
     
-    // TODO: Add singleton : let shared = RealmStorageManager()
+    static let shared = RealmStorageManager()
     
     private lazy var realmStorage = try? Realm()
     
-    func save(model: NewsRealmModel, completion: (() -> Void)?) {
+    func save(_ model: NewsItemModel, completion: (() -> Void)?) {
+        let realmModel = NewsRealmModel(id: model.id,
+                                        title: model.title,
+                                        descriptionNews: model.description,
+                                        date: model.date,
+                                        isFavorite: model.isFavorite ?? false)
+        
         try? self.realmStorage?.write {
-            self.realmStorage?.add(model)
+            self.realmStorage?.add(realmModel)
             completion?()
         }
     }
     
-    func update(model: NewsRealmModel, completion: (() -> Void)?) {
+    func update(_ model: NewsItemModel, completion: (() -> Void)?) {
+        let realmModel = NewsRealmModel(id: model.id,
+                                        title: model.title,
+                                        descriptionNews: model.description,
+                                        date: model.date,
+                                        isFavorite: model.isFavorite ?? false)
+        
         try? self.realmStorage?.write {
-            self.realmStorage?.add(model, update: .modified)
+            self.realmStorage?.add(realmModel, update: .modified)
             completion?()
         }
     }
     
-    func delete(model: NewsRealmModel, completion: (() -> Void)?) {
+    func delete(_ model: NewsItemModel, completion: (() -> Void)?) {
         let idPredicate = NSPredicate(format: "id == %ld", model.id)
         
         if let model = self.realmStorage?.objects(NewsRealmModel.self).filter(idPredicate) {
@@ -56,14 +60,14 @@ class RealmStorageManagerImp: RealmStorageManager {
         }
     }
     
-    func getAll() -> [NewsRealmModel] {
+    func getAll() -> [NewsItemModel] {
         let models = self.realmStorage?.objects(NewsRealmModel.self)
-        var newsModels: [NewsRealmModel] = []
+        var newsModels: [NewsItemModel] = []
         
         models?.forEach({
-            let item = NewsRealmModel(id: $0.id,
+            let item = NewsItemModel(id: $0.id,
                                       title: $0.title,
-                                      descriptionNews: $0.descriptionNews,
+                                      description: $0.descriptionNews,
                                       date: $0.date,
                                       isFavorite: $0.isFavorite)
             newsModels.append(item)

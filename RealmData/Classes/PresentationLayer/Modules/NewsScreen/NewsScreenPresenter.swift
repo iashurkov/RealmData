@@ -48,15 +48,7 @@ final class NewsScreenPresenter {
     }
     
     private func checkStorageModel(completion: (() -> Void)?) {
-//        if let realmModels = self.interactor?.getAllModesFromRealmStorage() {
-//            for item in realmModels {
-//                if let index = self.newsModels?.result.firstIndex(where: { $0.id == item.id }) {
-//                    self.newsModels?.result[index].isFavorite = item.isFavorite
-//                }
-//            }
-//        }
-        
-        if let coreDataModels = self.interactor?.getAllModesFromCoreData() {
+        if let coreDataModels = self.interactor?.getPostModels() {
             for item in coreDataModels {
                 if let index = self.newsModels?.result.firstIndex(where: { $0.id == item.id }) {
                     self.newsModels?.result[index].isFavorite = item.isFavorite
@@ -88,28 +80,14 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
             var model = self.newsModels?.result.first(where: { $0.id == id })
         else { return }
         
-//        let newsModel = NewsRealmModel(id: model.id,
-//                                       title: model.title,
-//                                       descriptionNews: model.description,
-//                                       date: model.date,
-//                                       isFavorite: isFavorite)
-//        if isFavorite {
-//            self.interactor?.addModelToRealmStorage(model: newsModel) {
-//                NotificationCenter.default.post(Notification(name: .updateFavoriteList))
-//            }
-//        } else {
-//            self.interactor?.removeModelFromRealmStorage(model: newsModel) {
-//                NotificationCenter.default.post(Notification(name: .updateFavoriteList))
-//            }
-//        }
-        
-        model.isFavorite = isFavorite
         if isFavorite {
-            CoreDataManager.shared.addModel(model) {
+            model.isFavorite = true
+            
+            self.interactor?.savePostModel(model) {
                 NotificationCenter.default.post(Notification(name: .updateFavoriteList))
             }
         } else {
-            CoreDataManager.shared.delete(model: model) {
+            self.interactor?.deletePostModel(model) {
                 NotificationCenter.default.post(Notification(name: .updateFavoriteList))
             }
         }
