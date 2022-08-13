@@ -10,6 +10,7 @@ import RealmSwift
 
 protocol FavoritesScreenViewOutput: ViewOutput {
     func didTapFavoriteButton(for id: Int?, isFavorite: Bool)
+    func removeAllItems()
 }
 
 final class FavoritesScreenPresenter {
@@ -45,7 +46,6 @@ final class FavoritesScreenPresenter {
     
     private func obtainData() {
         self.newsModels = self.interactor?.getPostModels()
-        
         self.view?.didOdtainData(with: self.newsModels)
     }
 }
@@ -71,6 +71,13 @@ extension FavoritesScreenPresenter: FavoritesScreenViewOutput {
                 self.view?.didOdtainData(with: self.newsModels)
             }
             
+            NotificationCenter.default.post(Notification(name: .updateNewsList))
+        }
+    }
+    
+    func removeAllItems() {
+        self.interactor?.deletePostModels() {
+            self.obtainData()
             NotificationCenter.default.post(Notification(name: .updateNewsList))
         }
     }

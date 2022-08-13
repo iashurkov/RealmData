@@ -53,6 +53,11 @@ final class FavoritesScreenViewController: UIViewController, NavBarSetupable {
     // MARK: Drawing
     
     private func drawSelf() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash.fill"),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(self.didTapRightBarButton))
+        
         self.view.addSubview(self.tableView)
         
         let constraintsForTableView = self.constraintsForTableView()
@@ -81,6 +86,22 @@ final class FavoritesScreenViewController: UIViewController, NavBarSetupable {
         self.tableView.beginUpdates()
         self.tableView.layoutIfNeeded()
         self.tableView.endUpdates()
+    }
+    
+    @objc func didTapRightBarButton() {
+        let alert = UIAlertController(title: "Warning",
+                                      message: "Do you really want to delete all the data?",
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Continue",
+                                      style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.presenter?.removeAllItems()
+        })
+        alert.addAction(UIAlertAction(title: "Cancel",
+                                      style: UIAlertAction.Style.cancel,
+                                      handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
