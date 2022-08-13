@@ -8,11 +8,9 @@
 import Foundation
 
 protocol FavoritesScreenInteractorInput {
-    func getAllModesFromRealmStorage() -> [NewsRealmModel]
-    func removeModelFromRealmStorage(model: NewsRealmModel, completion: (() -> Void)?)
-    
-    func getAllModesFromCoreData() -> [NewsItemModel]
-    func removeModelFromCoreData(model: NewsItemModel, completion: (() -> Void)?)
+    func deletePostModel(_ model: NewsItemModel, completion: (() -> Void)?)
+    func deletePostModels(completion: (() -> Void)?)
+    func getPostModels() -> [NewsItemModel]
 }
 
 protocol FavoritesScreenInteractorOutput: AnyObject {
@@ -24,14 +22,10 @@ final class FavoritesScreenInteractor {
     
     weak var presenter: FavoritesScreenInteractorOutput?
     
-    // MARK: Private Properties
-    
-    private let realmStorage: RealmStorageManager
-    
     // MARK: Init
     
-    init(realmStorage: RealmStorageManager) {
-        self.realmStorage = realmStorage
+    init() {
+        
     }
 }
 
@@ -39,23 +33,44 @@ final class FavoritesScreenInteractor {
 
 extension FavoritesScreenInteractor: FavoritesScreenInteractorInput {
     
-    func getAllModesFromRealmStorage() -> [NewsRealmModel] {
-        return self.realmStorage.getAll()
-    }
-    
-    func removeModelFromRealmStorage(model: NewsRealmModel, completion: (() -> Void)?) {
-        self.realmStorage.delete(model: model) {
+    func deletePostModel(_ model: NewsItemModel, completion: (() -> Void)?) {
+        
+        // MARK: Realm
+        
+//        RealmStorageManager.shared.delete(model) {
+//            completion?()
+//        }
+        
+        // MARK: CoreData
+        
+        CoreDataManager.shared.delete(model) {
             completion?()
         }
     }
     
-    func getAllModesFromCoreData() -> [NewsItemModel] {
+    func deletePostModels(completion: (() -> Void)?) {
+        
+        // MARK: Realm
+        
+//        RealmStorageManager.shared.deleteAll {
+//            completion?()
+//        }
+        
+        // MARK: CoreData
+        
+        CoreDataManager.shared.deleteAll {
+            completion?()
+        }
+    }
+    
+    func getPostModels() -> [NewsItemModel] {
+        
+        // MARK: Realm
+        
+//        return RealmStorageManager.shared.getAll()
+        
+        // MARK: CoreData
+        
         return CoreDataManager.shared.getAll()
-    }
-    
-    func removeModelFromCoreData(model: NewsItemModel, completion: (() -> Void)?) {
-        CoreDataManager.shared.delete(model: model) {
-            completion?()
-        }
     }
 }

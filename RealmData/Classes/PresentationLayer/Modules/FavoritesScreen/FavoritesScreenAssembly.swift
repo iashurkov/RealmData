@@ -10,15 +10,12 @@ import UIKit
 final class FavoritesScreenAssembly: Assembly {
     
     static func assembleModule(with model: TransitionModel) -> UIViewController {
-        guard model is Model
-        else { fatalError() }
-        
-        let realmStorage: RealmStorageManager = RealmStorageManagerImp()
+        guard model is Model else { fatalError() }
         
         let view = FavoritesScreenViewController()
         let router = FavoritesScreenRouter()
         let presenter = FavoritesScreenPresenter()
-        let interactor = FavoritesScreenInteractor(realmStorage: realmStorage)
+        let interactor = FavoritesScreenInteractor()
         
         view.presenter = presenter
         
