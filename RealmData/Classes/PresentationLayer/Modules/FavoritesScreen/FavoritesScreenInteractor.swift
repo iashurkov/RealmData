@@ -10,6 +10,9 @@ import Foundation
 protocol FavoritesScreenInteractorInput {
     func getAllModesFromRealmStorage() -> [NewsRealmModel]
     func removeModelFromRealmStorage(model: NewsRealmModel, completion: (() -> Void)?)
+    
+    func getAllModesFromCoreData() -> [NewsItemModel]
+    func removeModelFromCoreData(model: NewsItemModel, completion: (() -> Void)?)
 }
 
 protocol FavoritesScreenInteractorOutput: AnyObject {
@@ -42,6 +45,16 @@ extension FavoritesScreenInteractor: FavoritesScreenInteractorInput {
     
     func removeModelFromRealmStorage(model: NewsRealmModel, completion: (() -> Void)?) {
         self.realmStorage.delete(model: model) {
+            completion?()
+        }
+    }
+    
+    func getAllModesFromCoreData() -> [NewsItemModel] {
+        return CoreDataManager.shared.getAll()
+    }
+    
+    func removeModelFromCoreData(model: NewsItemModel, completion: (() -> Void)?) {
+        CoreDataManager.shared.delete(model: model) {
             completion?()
         }
     }

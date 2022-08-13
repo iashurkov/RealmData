@@ -22,7 +22,7 @@ final class FavoritesScreenPresenter {
     
     // MARK: Private Properties
     
-    private var newsModels: [NewsRealmModel]?
+    private var newsModels: [NewsItemModel]?
     
     // MARK: Init
     
@@ -44,7 +44,9 @@ final class FavoritesScreenPresenter {
     }
     
     private func obtainData() {
-        self.newsModels = self.interactor?.getAllModesFromRealmStorage()
+//        self.newsModels = self.interactor?.getAllModesFromRealmStorage()
+        self.newsModels = self.interactor?.getAllModesFromCoreData()
+        
         self.view?.didOdtainData(with: self.newsModels)
     }
 }
@@ -64,13 +66,28 @@ extension FavoritesScreenPresenter: FavoritesScreenViewOutput {
             let model = self.newsModels?.first(where: { $0.id == id })
         else { return }
         
-        let newsModel = NewsRealmModel(id: model.id,
-                                       title: model.title,
-                                       descriptionNews: model.description,
-                                       date: model.date,
-                                       isFavorite: isFavorite)
+//        let newsModel = NewsRealmModel(id: model.id,
+//                                       title: model.title,
+//                                       descriptionNews: model.description,
+//                                       date: model.date,
+//                                       isFavorite: isFavorite)
+//
+//        self.interactor?.removeModelFromRealmStorage(model: newsModel) {
+//            if let index = self.newsModels?.firstIndex(where: { $0.id == id }) {
+//                self.newsModels?.remove(at: index)
+//                self.view?.didOdtainData(with: self.newsModels)
+//            }
+//
+//            NotificationCenter.default.post(Notification(name: .updateNewsList))
+//        }
         
-        self.interactor?.removeModelFromRealmStorage(model: newsModel) {
+        let newsModel = NewsItemModel(id: model.id,
+                                      title: model.title,
+                                      description: model.description,
+                                      date: model.date,
+                                      isFavorite: isFavorite)
+        
+        self.interactor?.removeModelFromCoreData(model: newsModel) {
             if let index = self.newsModels?.firstIndex(where: { $0.id == id }) {
                 self.newsModels?.remove(at: index)
                 self.view?.didOdtainData(with: self.newsModels)

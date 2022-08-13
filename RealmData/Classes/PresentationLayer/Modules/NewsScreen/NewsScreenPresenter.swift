@@ -48,8 +48,16 @@ final class NewsScreenPresenter {
     }
     
     private func checkStorageModel(completion: (() -> Void)?) {
-        if let realmModels = self.interactor?.getAllModesFromRealmStorage() {
-            for item in realmModels {
+//        if let realmModels = self.interactor?.getAllModesFromRealmStorage() {
+//            for item in realmModels {
+//                if let index = self.newsModels?.result.firstIndex(where: { $0.id == item.id }) {
+//                    self.newsModels?.result[index].isFavorite = item.isFavorite
+//                }
+//            }
+//        }
+        
+        if let coreDataModels = self.interactor?.getAllModesFromCoreData() {
+            for item in coreDataModels {
                 if let index = self.newsModels?.result.firstIndex(where: { $0.id == item.id }) {
                     self.newsModels?.result[index].isFavorite = item.isFavorite
                 }
@@ -77,20 +85,31 @@ extension NewsScreenPresenter: NewsScreenViewOutput {
         guard
             self.newsModels?.result.isEmpty == false,
             let id = id,
-            let model = self.newsModels?.result.first(where: { $0.id == id })
+            var model = self.newsModels?.result.first(where: { $0.id == id })
         else { return }
         
-        let newsModel = NewsRealmModel(id: model.id,
-                                       title: model.title,
-                                       descriptionNews: model.description,
-                                       date: model.date,
-                                       isFavorite: isFavorite)
+//        let newsModel = NewsRealmModel(id: model.id,
+//                                       title: model.title,
+//                                       descriptionNews: model.description,
+//                                       date: model.date,
+//                                       isFavorite: isFavorite)
+//        if isFavorite {
+//            self.interactor?.addModelToRealmStorage(model: newsModel) {
+//                NotificationCenter.default.post(Notification(name: .updateFavoriteList))
+//            }
+//        } else {
+//            self.interactor?.removeModelFromRealmStorage(model: newsModel) {
+//                NotificationCenter.default.post(Notification(name: .updateFavoriteList))
+//            }
+//        }
+        
+        model.isFavorite = isFavorite
         if isFavorite {
-            self.interactor?.addModelToRealmStorage(model: newsModel) {
+            CoreDataManager.shared.addModel(model) {
                 NotificationCenter.default.post(Notification(name: .updateFavoriteList))
             }
         } else {
-            self.interactor?.removeModelFromRealmStorage(model: newsModel) {
+            CoreDataManager.shared.delete(model: model) {
                 NotificationCenter.default.post(Notification(name: .updateFavoriteList))
             }
         }

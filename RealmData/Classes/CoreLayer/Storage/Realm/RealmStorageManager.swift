@@ -12,11 +12,13 @@ protocol RealmStorageManager {
     func save(model: NewsRealmModel, completion: (() -> Void)?)
     func update(model: NewsRealmModel, completion: (() -> Void)?)
     func delete(model: NewsRealmModel, completion: (() -> Void)?)
-    func deleteAll()
+    func deleteAll(completion: (() -> Void)?)
     func getAll() -> [NewsRealmModel]
 }
 
 class RealmStorageManagerImp: RealmStorageManager {
+    
+    // TODO: Add singleton : let shared = RealmStorageManager()
     
     private lazy var realmStorage = try? Realm()
     
@@ -45,10 +47,11 @@ class RealmStorageManagerImp: RealmStorageManager {
         }
     }
     
-    func deleteAll() {
+    func deleteAll(completion: (() -> Void)?) {
         if let models = self.realmStorage?.objects(NewsRealmModel.self) {
             try? self.realmStorage?.write {
                 self.realmStorage?.delete(models)
+                completion?()
             }
         }
     }

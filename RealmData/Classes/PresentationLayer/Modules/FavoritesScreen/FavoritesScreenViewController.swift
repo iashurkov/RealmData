@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 protocol FavoritesScreenViewInput: AnyObject {
-    func didOdtainData(with models: [NewsRealmModel]?)
+    func didOdtainData(with models: [NewsItemModel]?)
 }
 
 final class FavoritesScreenViewController: UIViewController, NavBarSetupable {
@@ -35,7 +35,7 @@ final class FavoritesScreenViewController: UIViewController, NavBarSetupable {
         return tableView
     }()
     
-    private var model: [NewsRealmModel]?
+    private var model: [NewsItemModel]?
     
     // MARK: Lifecycle
     
@@ -100,15 +100,8 @@ extension FavoritesScreenViewController: UITableViewDataSource {
         
         if let model = self.model?[indexPath.row] {
             let cell: NewsViewCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.setup(with: model)
             cell.delegate = self
-            
-            let newsModel = NewsItemModel.init(id: model.id,
-                                               title: model.title,
-                                               description: model.descriptionNews,
-                                               date: model.date,
-                                               isFavorite: model.isFavorite)
-            
-            cell.setup(with: newsModel)
             return cell
         }
         
@@ -140,7 +133,7 @@ extension FavoritesScreenViewController: NewsViewCellDelegate {
 
 extension FavoritesScreenViewController: FavoritesScreenViewInput {
     
-    func didOdtainData(with models: [NewsRealmModel]?) {
+    func didOdtainData(with models: [NewsItemModel]?) {
         self.model = models
         self.tableView.reloadData()
     }

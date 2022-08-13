@@ -13,6 +13,8 @@ protocol NewsScreenInteractorInput {
     func getAllModesFromRealmStorage() -> [NewsRealmModel]
     func addModelToRealmStorage(model: NewsRealmModel, completion: (() -> Void)?)
     func removeModelFromRealmStorage(model: NewsRealmModel, completion: (() -> Void)?)
+    
+    func getAllModesFromCoreData() -> [NewsItemModel]
 }
 
 protocol NewsScreenInteractorOutput: AnyObject {
@@ -69,5 +71,9 @@ extension NewsScreenInteractor: NewsScreenInteractorInput {
         self.realmStorage.delete(model: model) {
             completion?()
         }
+    }
+    
+    func getAllModesFromCoreData() -> [NewsItemModel] {
+        return CoreDataManager.shared.getAll()
     }
 }
