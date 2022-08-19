@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreDataManager {
+class CoreDataManager: StorageManagerProtocol {
     
     static let shared = CoreDataManager()
     
@@ -23,6 +23,39 @@ class CoreDataManager {
         return container
     }()
     
+    // Realm -> CoreData
+    func migrate(clearStorageBeforeFilling: Bool, completion: (() -> Void)?) {
+        let realmModels = RealmStorageManager.shared.getAll()
+        var coreDataModels: [News] = []
+        
+        let completionAfterClear = {
+            for model in realmModels {
+                let coreDataModel = News(context: self.persistentContainer.viewContext)
+                coreDataModel.id = Int16(model.id)
+                coreDataModel.title = model.title
+                coreDataModel.descriptionNews = model.description
+                coreDataModel.date = model.date
+                coreDataModel.isFavorite = model.isFavorite ?? false
+                
+                coreDataModels.append(coreDataModel)
+            }
+            
+            self.updateStorage {
+                RealmStorageManager.shared.deleteAll {
+                    completion?()
+                }
+            }
+        }
+        
+        if clearStorageBeforeFilling {
+            self.deleteAll {
+                completionAfterClear()
+            }
+        } else {
+            completionAfterClear()
+        }
+    }
+    
     private func updateStorage(_ completion: (() -> Void)?) {
         let context = self.persistentContainer.viewContext
         
@@ -34,6 +67,8 @@ class CoreDataManager {
                 let nsError = error as NSError
                 fatalError("[ ## ] FatalError : Unresolved CoreData error : \(nsError)")
             }
+        } else {
+            completion?()
         }
     }
     
@@ -48,12 +83,17 @@ class CoreDataManager {
         self.updateStorage(completion)
     }
     
+    func update(_ model: NewsItemModel, completion: (() -> Void)?) {
+        
+    }
+    
     func delete(_ model: NewsItemModel, completion: (() -> Void)?) {
         let context = self.persistentContainer.viewContext
         let request: NSFetchRequest<News> = News.fetchRequest()
         request.predicate = NSPredicate(format: "id == %ld", model.id)
         
-        if let models = try? context.fetch(request) {
+        if let models = try? context.fetch(request),
+           !models.isEmpty {
             for object in models {
                 context.delete(object)
             }
@@ -66,7 +106,8 @@ class CoreDataManager {
         let context = self.persistentContainer.viewContext
         let request: NSFetchRequest<News> = News.fetchRequest()
         
-        if let models = try? context.fetch(request) {
+        if let models = try? context.fetch(request),
+           !models.isEmpty {
             for object in models {
                 context.delete(object)
             }
@@ -80,14 +121,13 @@ class CoreDataManager {
         let request: NSFetchRequest<News> = News.fetchRequest()
         request.predicate = NSPredicate(format: "id == %ld", id)
         
-        if let models = try? context.fetch(request),
-           let item = models.first {
-            let model = NewsItemModel(id: Int(item.id),
-                                     title: item.title,
-                                     description: item.descriptionNews,
-                                     date: item.date,
-                                     isFavorite: item.isFavorite)
-            return model
+        if let objects = try? context.fetch(request),
+           let model = objects.first {
+            return NewsItemModel(id: Int(model.id),
+                                 title: model.title,
+                                 description: model.descriptionNews,
+                                 date: model.date,
+                                 isFavorite: model.isFavorite)
         }
         
         return nil

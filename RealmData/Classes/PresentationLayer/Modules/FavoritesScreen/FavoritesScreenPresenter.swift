@@ -71,14 +71,14 @@ extension FavoritesScreenPresenter: FavoritesScreenViewOutput {
                 self.view?.didOdtainData(with: self.newsModels)
             }
             
-            NotificationCenter.default.post(Notification(name: .updateNewsList))
+            NotificationCenter.default.post(name: .unselectPost, object: nil, userInfo: ["id" : id])
         }
     }
     
     func removeAllItems() {
         self.interactor?.deletePostModels() {
             self.obtainData()
-            NotificationCenter.default.post(Notification(name: .updateNewsList))
+            NotificationCenter.default.post(Notification(name: .unselectAllPosts))
         }
     }
 }

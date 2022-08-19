@@ -36,6 +36,7 @@
 		476F6E62287C6B14002CEE9A /* NewsScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E5D287C6B14002CEE9A /* NewsScreenInteractor.swift */; };
 		476F6E64287C6C66002CEE9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E63287C6C66002CEE9A /* UIViewController.swift */; };
 		476F6E66287C6DAB002CEE9A /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476F6E65287C6DAB002CEE9A /* ViewOutput.swift */; };
+		478B240E28A822AC00FADEBF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B240D28A822AC00FADEBF /* StorageManager.swift */; };
 		47A8000D288027BC006B1404 /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8000C288027BC006B1404 /* NSNotification.swift */; };
 		47DA176128A40269006032C4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DA176028A40269006032C4 /* CoreDataManager.swift */; };
 		47DD12812893C3E2004963CF /* RealmStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DD12802893C3E2004963CF /* RealmStorageManager.swift */; };
@@ -45,6 +46,7 @@
 		47F64860287D6C9F0056C727 /* ExpandableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6485F287D6C9F0056C727 /* ExpandableLabel.swift */; };
 		47F64862287D6CCA0056C727 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64861287D6CCA0056C727 /* UILabel.swift */; };
 		47F64864287D6CDD0056C727 /* UITapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F64863287D6CDD0056C727 /* UITapGestureRecognizer.swift */; };
+		47FE2AE928ACD2E300CB00F0 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FE2AE828ACD2E200CB00F0 /* Realm.swift */; };
 		8A33AA0EB2E5E3D75400F95C /* Pods_RealmData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B482C9FDC606A6ECA94F10A9 /* Pods_RealmData.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,7 @@
 		476F6E5D287C6B14002CEE9A /* NewsScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreenInteractor.swift; sourceTree = "<group>"; };
 		476F6E63287C6C66002CEE9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		476F6E65287C6DAB002CEE9A /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
+		478B240D28A822AC00FADEBF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		47A8000C288027BC006B1404 /* NSNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
 		47DA176028A40269006032C4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		47DD12802893C3E2004963CF /* RealmStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageManager.swift; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 		47F6485F287D6C9F0056C727 /* ExpandableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableLabel.swift; sourceTree = "<group>"; };
 		47F64861287D6CCA0056C727 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		47F64863287D6CDD0056C727 /* UITapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizer.swift; sourceTree = "<group>"; };
+		47FE2AE828ACD2E200CB00F0 /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		9D12A62ABE1F97FDA37C7468 /* Pods-RealmData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmData.release.xcconfig"; path = "Target Support Files/Pods-RealmData/Pods-RealmData.release.xcconfig"; sourceTree = "<group>"; };
 		B482C9FDC606A6ECA94F10A9 /* Pods_RealmData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDABEE0B2BE7E3701140BF3 /* Pods-RealmData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmData.debug.xcconfig"; path = "Target Support Files/Pods-RealmData/Pods-RealmData.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 				47F64863287D6CDD0056C727 /* UITapGestureRecognizer.swift */,
 				4725BA32287DAEF900188C9A /* NSAttributedString.swift */,
 				47A8000C288027BC006B1404 /* NSNotification.swift */,
+				47FE2AE828ACD2E200CB00F0 /* Realm.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 			children = (
 				473F78FF28A3FC62008430CC /* CoreData */,
 				4753EF8128928D10005802E4 /* Realm */,
+				478B240D28A822AC00FADEBF /* StorageManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -447,6 +453,7 @@
 				4724795D287C72050039BB26 /* FavoritesScreenPresenter.swift in Sources */,
 				476F6E43287C69AC002CEE9A /* Assembly.swift in Sources */,
 				47F64858287D55540056C727 /* UITableView.swift in Sources */,
+				478B240E28A822AC00FADEBF /* StorageManager.swift in Sources */,
 				4725BA33287DAEF900188C9A /* NSAttributedString.swift in Sources */,
 				476F6E4C287C6A98002CEE9A /* SplashScreenViewController.swift in Sources */,
 				47F6485A287D55C60056C727 /* NSObject.swift in Sources */,
@@ -472,6 +479,7 @@
 				476F6E5F287C6B14002CEE9A /* NewsScreenRouter.swift in Sources */,
 				47247967287C7B570039BB26 /* NavBarSetupable.swift in Sources */,
 				47DA176128A40269006032C4 /* CoreDataManager.swift in Sources */,
+				47FE2AE928ACD2E300CB00F0 /* Realm.swift in Sources */,
 				473F790228A3FC88008430CC /* CoreDataModels.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

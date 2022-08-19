@@ -88,7 +88,7 @@ final class FavoritesScreenViewController: UIViewController, NavBarSetupable {
         self.tableView.endUpdates()
     }
     
-    @objc func didTapRightBarButton() {
+    @objc private func didTapRightBarButton() {
         let alert = UIAlertController(title: "Warning",
                                       message: "Do you really want to delete all the data?",
                                       preferredStyle: .alert)

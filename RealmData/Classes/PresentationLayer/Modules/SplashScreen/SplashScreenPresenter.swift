@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SplashScreenViewOutput: ViewOutput {
-    func viewIsReady()
+    func confirmStorageSystem(with useRealmStorage: Bool)
 }
 
 final class SplashScreenPresenter {
@@ -28,7 +28,9 @@ final class SplashScreenPresenter {
 
 extension SplashScreenPresenter: SplashScreenViewOutput {
     
-    func viewIsReady() {
-        self.router?.setStartScreen()
+    func confirmStorageSystem(with useRealmStorage: Bool) {
+        StorageManager.shared.checkStorageSystem(with: useRealmStorage) {
+            self.router?.setStartScreen()
+        }
     }
 }

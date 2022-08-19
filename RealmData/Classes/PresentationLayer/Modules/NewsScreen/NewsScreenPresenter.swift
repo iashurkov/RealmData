@@ -28,8 +28,13 @@ final class NewsScreenPresenter {
     
     init() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.updateNewsList),
-                                               name: .updateNewsList,
+                                               selector: #selector(self.didUnselectAllPosts),
+                                               name: .unselectAllPosts,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.didUnselectPost(_:)),
+                                               name: .unselectPost,
                                                object: nil)
     }
     
@@ -39,8 +44,22 @@ final class NewsScreenPresenter {
     
     // MARK: Private methods
     
-    @objc private func updateNewsList(_ notification: Notification) {
-        self.checkStorageModel {
+    @objc private func didUnselectAllPosts(_ notification: Notification) {
+        for index in 0...(self.newsModels?.result.count ?? 1) - 1 {
+            self.newsModels?.result[index].isFavorite = false
+        }
+        
+        if let models = self.newsModels {
+            self.view?.didOdtainData(with: models)
+        }
+    }
+    
+    @objc private func didUnselectPost(_ notification: Notification) {
+        if let dict = notification.userInfo as NSDictionary?,
+           let id = dict["id"] as? Int,
+           let index = self.newsModels?.result.firstIndex(where: { $0.id == id }) {
+            self.newsModels?.result[index].isFavorite = false
+            
             if let models = self.newsModels {
                 self.view?.didOdtainData(with: models)
             }
@@ -48,8 +67,8 @@ final class NewsScreenPresenter {
     }
     
     private func checkStorageModel(completion: (() -> Void)?) {
-        if let coreDataModels = self.interactor?.getPostModels() {
-            for item in coreDataModels {
+        if let viewModel = self.interactor?.getPostModels() {
+            for item in viewModel {
                 if let index = self.newsModels?.result.firstIndex(where: { $0.id == item.id }) {
                     self.newsModels?.result[index].isFavorite = item.isFavorite
                 }
